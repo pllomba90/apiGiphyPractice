@@ -16,6 +16,7 @@ const gifForm = document.getElementById("gifForm");
 gifForm.addEventListener("submit", async function(e){
     e.preventDefault();
     let $searchTerm = $("#searchInput").val();
+   
     const response = await axios.get("https://api.giphy.com/v1/gifs/search", {
         params:{
             api_key: "thfc6o5F3i0U2pi8adrWmNpnQHZkXaC6",
@@ -23,6 +24,9 @@ gifForm.addEventListener("submit", async function(e){
         }
     });
     addGif(response.data);
+    gifForm.reset();
+   
+    
 });
 $("#deleteBtn").on("click", function(){
     $gifSpot.empty();
